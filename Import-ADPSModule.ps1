@@ -15,6 +15,9 @@ if((New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsId
     Import-Module "C:\Windows\WinSxS\Microsoft.ActiveDirectory.Management.dll" -Force -Global
 
 }else{
+    Write-Host "You have to run this script in elevated mode for it to work! Cannot continue..." -ForegroundColor Red
+    
+    <# Does currently not work :( 
     Write-Host "Not running in elevated mode, importing module only in current session!" -ForegroundColor Yellow
 
     # Unblock the files
@@ -24,6 +27,7 @@ if((New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsId
     Import-Module -Name $scriptPath\ActiveDirectory -Force
     Import-Module "$scriptPath\Microsoft.ActiveDirectory.Management.resources.dll" -Force -Global
     Import-Module "$scriptPath\Microsoft.ActiveDirectory.Management.dll" -Force -Global
+    #>
 }
 
 
